@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: '*',
             allow: '/',
         },
-        sitemap: 'https://shayneeo.id.vn/sitemap.xml',
+        sitemap: 'https://0.id.vn/sitemap.xml',
     };
 }
