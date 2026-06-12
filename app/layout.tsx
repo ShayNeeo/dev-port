@@ -14,12 +14,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: "ShayNeeo | Retro Developer Portfolio",
-    description: "Developer portfolio of ShayNeeo. Rust, TypeScript, and Retro vibes.",
+    title: "Pham Quoc Thanh | ShayNeeo Arcade Portfolio",
+    description: "FinTech engineer, Rust systems developer, data engineering builder, and MVP architect portfolio of ShayNeeo.",
     metadataBase: new URL("https://0.id.vn"),
     openGraph: {
-        title: "ShayNeeo | Retro Developer Portfolio",
-        description: "Developer portfolio of ShayNeeo. Rust, TypeScript, and Retro vibes.",
+        title: "Pham Quoc Thanh | ShayNeeo Arcade Portfolio",
+        description: "FinTech engineer, Rust systems developer, data engineering builder, and MVP architect portfolio of ShayNeeo.",
         url: "https://0.id.vn",
         siteName: "ShayNeeo Portfolio",
         locale: "en_US",

@@ -17,6 +17,8 @@ body {
     )
     rgb(var(--background-start-rgb));
   overflow-x: hidden;
+  min-height: 100vh;
+  text-rendering: geometricPrecision;
 }
 
 /* Custom Scrollbar */
@@ -86,6 +88,27 @@ body {
   text-shadow: 2px 2px 0px #ff0055;
 }
 
+.pixel-grid {
+  background-image:
+    linear-gradient(rgba(0, 255, 153, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 204, 255, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 86%, transparent);
+}
+
+.pixel-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 0, 85, 0.05), transparent 25%, transparent 75%, rgba(255, 204, 0, 0.05)),
+    radial-gradient(circle at 50% 0%, rgba(0, 204, 255, 0.12), transparent 36%);
+}
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
 .retro-border {
   border: 2px solid #00ff99;
   box-shadow: 4px 4px 0px #00ff99;
@@ -101,4 +124,20 @@ body {
   border-color: #00ff99;
   box-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
   transform: translateY(-2px);
+}
+
+a,
+button {
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
