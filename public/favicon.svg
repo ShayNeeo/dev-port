@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="512" height="512" shape-rendering="crispEdges" role="img" aria-labelledby="mark-title">
+  <title id="mark-title">ShayNeeo slashed zero</title>
+  <desc>A pixel-drawn zero cut by a diagonal slash: the mark behind 0.id.vn.</desc>
+
+  <!-- backdrop, matches the site bg token -->
+  <rect width="16" height="16" fill="#1a1a1a"/>
+
+  <!-- CRT scanlines, drawn BEHIND the mark so they can never break the glyph -->
+  <g fill="#00ff99" fill-opacity=".09">
+    <rect x="0" y="4" width="16" height="1"/>
+    <rect x="0" y="11" width="16" height="1"/>
+  </g>
+
+  <!-- the 0: closed ring, uniform 2px wall on every scanline -->
+  <path fill="#e0e0e0" d="
+    M6 1h4v1H6z M4 2h8v1H4z
+    M3 3h2v1H3z M11 3h2v1h-2z
+    M2 4h2v1H2z M12 4h2v1h-2z
+    M2 5h2v1H2z M12 5h2v1h-2z
+    M1 6h2v1H1z M13 6h2v1h-2z
+    M1 7h2v1H1z M13 7h2v1h-2z
+    M1 8h2v1H1z M13 8h2v1h-2z
+    M1 9h2v1H1z M13 9h2v1h-2z
+    M2 10h2v1H2z M12 10h2v1h-2z
+    M2 11h2v1H2z M12 11h2v1h-2z
+    M3 12h2v1H3z M11 12h2v1h-2z
+    M4 13h8v1H4z M6 14h4v1H6z"/>
+
+  <!-- the slash: 2 cells wide so it survives a 16px downscale -->
+  <path fill="#ff0055" d="
+    M9 3h2v1H9z M9 3h2v2H9z
+    M8 5h2v1H8z M8 5h2v2H8z
+    M7 7h2v1H7z M7 7h2v2H7z
+    M6 9h2v1H6z M6 9h2v2H6z
+    M5 11h2v1H5z M5 11h2v2H5z"/>
+</svg>
