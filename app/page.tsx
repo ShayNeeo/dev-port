@@ -31,6 +31,7 @@ type Stat = {
 type Quest = {
     title: string;
     year: string;
+    role: string;
     stack: string;
     summary: string;
     highlights: string[];
@@ -50,6 +51,12 @@ type Achievement = {
     year: string;
 };
 
+type Role = {
+    org: string;
+    period: string;
+    detail: string;
+};
+
 type LinkItem = {
     label: string;
     href: string;
@@ -59,143 +66,279 @@ type LinkItem = {
 const contactPolicy = "No phone numbers on public contact";
 
 const stats: Stat[] = [
-    { label: "Top 10 GPA", value: "3.29/4", tone: "green" },
-    { label: "W9 ecosystem", value: "4+ microservices", tone: "blue" },
-    { label: "Scraper benchmark", value: "5x speedup", tone: "pink" },
-    { label: "Data audit", value: "650k+ orders", tone: "yellow" },
+    { label: "GPA, top 10%", value: "3.33/4.00", tone: "green" },
+    { label: "DataTrust noise cut", value: "81.8%", tone: "pink" },
+    { label: "EcoMiles test suite", value: "526 green", tone: "blue" },
+    { label: "Deadheading removed", value: "-17.1%", tone: "yellow" },
 ];
 
 const quests: Quest[] = [
     {
-        title: "W9 Labs Network",
-        year: "2025 - Present",
-        stack: "Rust · Axum · Leptos · PostgreSQL · SurrealDB",
+        title: "DataTrust OS v5.0",
+        year: "2026",
+        role: "Lead architect, 392 of 546 commits",
+        stack: "Python · FastAPI · DuckDB · LangGraph · React 19 · Docker",
         summary:
-            "A multi-service product lab with URL shortening, QR generation, markdown notes, auth, mail tooling, and an 8-bit voxel arcade landing hub.",
+            "Causal AI console for VinGroup mobility telemetry. Telemetry goes in, an incident queue comes out, and nothing reaches the warehouse until a person signs a hash.",
         highlights: [
-            "Architected 4+ microservices behind Docker, Caddy, and Cloudflare WAF.",
-            "Implemented OAuth 2.0 with PostgreSQL-backed identity across services.",
+            "184,715 rows cleared the detector stack in 15.21s: 775 signals, 141 incidents, 81.8% noise cut.",
+            "Four detector layers (constraints, rolling MAD, invariants, CUSUM/PELT) feed a ReAct escalation ladder.",
+            "The repo also records its own misses: RCA top-1 hit 0.33 on the sealed holdout and 0.0 on the C1 harness.",
         ],
-        href: "https://github.com/w9labs",
+        href: "https://t086.w9.nu",
         status: "ONLINE",
     },
     {
-        title: "Crypto Herding Analysis",
-        year: "2025 - 2026",
-        stack: "Python · Pandas · Stata · LaTeX",
+        title: "SHB Corporate Sales Copilot",
+        year: "2026",
+        role: "Dominant committer, 104 of 192 commits, VAIC corporate banking track",
+        stack: "Python · FastAPI · PostgreSQL 17 · MCP RAG · Flutter · Gemini",
         summary:
-            "Quantitative research pipeline studying cryptocurrency herding during COVID-19 with market, VIX, and Google Trends signals.",
+            "Agent workspace for SHB corporate relationship managers. It reads a client's paperwork, checks eligibility against fixed rules, and waits for the RM to approve before anything reaches the CRM.",
         highlights: [
-            "Implemented CSAD, quantile regressions, and Markov Switching models.",
-            "Automated LaTeX report generation for academic publication workflows.",
+            "Ran 40 cases through a single agent and a specialist chain: missing-info recall 0.89 against 0.0.",
+            "Unsupported-claim rate came back at 0.0, citations valid on every case.",
+            "The model never decides eligibility. Rules do, which is why the eval is comparable.",
+        ],
+        href: "https://vaic.w9.nu",
+        status: "ONLINE",
+    },
+    {
+        title: "GSMartPin",
+        year: "Oct 2026",
+        role: "Sole author, 36 of 36 commits, VinUni V-RIC research assistant",
+        stack: "Python stdlib · Hungarian algorithm · LaTeX · Zotero gates",
+        summary:
+            "Simulation study for Green Smart Mobility: does an EV dispatcher that knows each car's state of charge beat one that ignores it?",
+        highlights: [
+            "Battery-aware dispatch cut deadheading 17.1% and purchased energy 10.2% across 7 seeds.",
+            "60 vehicles, 9 zones, 20 days, 3 demand scenarios, day and night, both arms.",
+            "22 verification gates pass. Demand is synthetic, no GreenSM logs exist yet, and the README says so plainly.",
         ],
         status: "RESEARCH",
     },
     {
-        title: "Real Estate Scraper",
+        title: "EcoMiles / GreenLogix",
         year: "2026",
-        stack: "Python · AsyncIO · Playwright · curl_cffi",
+        role: "Fullstack and AI, 82 of 90 commits, two startup contests",
+        stack: "FastAPI · SQLite · Flutter · Cloudflare Worker · Valhalla · OSRM",
         summary:
-            "High-throughput extraction engine for cross-source price and area validation on real estate platforms.",
+            "Route and emissions tool for urban delivery fleets. Takes orders, returns truck routes, and puts a fuel and CO2 number on each one.",
         highlights: [
-            "Reverse-engineered direct APIs and async multiplexing for 5x speedup.",
-            "Raised success rate with TLS fingerprinting and Playwright stealth.",
+            "526 backend tests green in 13.9s, plus a frozen OpenAPI snapshot across 23 paths.",
+            "Routing works without Google Maps: Valhalla truck profile, then OSRM, then haversine, with honest DEGRADED flags.",
+            "CO2 factors trace to IPCC 2006. Labelled a TTW accounting estimate, not a certified ISO 14083 pack.",
         ],
-        status: "PIPELINE",
+        href: "https://greenlogix.w9.nu",
+        status: "SHIPPED",
     },
     {
-        title: "E-Commerce Intelligence",
-        year: "2026",
-        stack: "Python · R · BI · SHAP",
+        title: "Nani Chinese",
+        year: "Sep 2026",
+        role: "Sole freelancer, 55 hour contract",
+        stack: "Next.js 16 · React 19 · Cloudflare Workers · D1 · Drizzle · R2",
         summary:
-            "Strategic data audit over 10 years of transactions, 121k customers, and 16.4B VND in order value.",
+            "Freelance build for a Vietnamese Chinese tutoring centre. Lessons, exercises, flashcards, spaced repetition, and a teacher CMS.",
         highlights: [
-            "Analyzed 650k+ orders and identified a 34.6% return-rate driver.",
-            "Proposed sizing-guide and micro-hub logistics interventions.",
+            "Fixed an R2 range bug where every PDF chunk request pulled the whole 4.19MB file back.",
+            "21 of 21 Playwright checks green across desktop and mobile, screenshots committed to the repo.",
+            "181 source files, 17.7k lines of app code and 5.8k lines of tests.",
         ],
-        status: "TOP 9",
+        href: "https://nanichinese.vn",
+        status: "LIVE",
     },
     {
-        title: "Vocai",
-        year: "Apr 2026",
-        stack: "Rust · Axum · NVIDIA NIM · PostgreSQL",
+        title: "OdysseyBot",
+        year: "Aug 2026",
+        role: "Team lead and graph engineer, 37 of 65 commits",
+        stack: "Python · discord.py · LangGraph · NetworkX · SQLite FTS5",
         summary:
-            "AI flashcard platform that generates study content, illustrations, and memory schedules for repeatable learning.",
+            "Discord bot for a course cohort. It answers logistics questions from official sources only, and hands off to a TA when the answer actually lives in student chat.",
         highlights: [
-            "Integrated NVIDIA NIM and Pollinations AI for generated learning assets.",
-            "Implemented SM-2 and Leitner spaced-repetition flows.",
+            "6,870 Discord messages cleaned to 5,145, then 1,438 triples and 987 entities in the graph.",
+            "Golden set went from 18 of 20 to 20 of 20 once a clarification step was added.",
+            "TA median wait measured at 33 minutes, p90 past 10 hours. That gap was the pitch.",
         ],
-        href: "https://vocai.top",
-        status: "AI APP",
+        status: "HACKATHON",
+    },
+    {
+        title: "An Tâm Số",
+        year: "Jul 2026",
+        role: "Data and impact analyst, 39 of 164 commits, UNESCO Youth Hackathon",
+        stack: "Expo 57 · React Native 0.86 · Express · Gemma · Docker · Cloudflare Tunnel",
+        summary:
+            "Scam-warning app for Vietnamese adults over 55. Screenshot a suspicious message and it comes back with the red flags in plain language.",
+        highlights: [
+            "Seven deterministic risk rules with Vietnamese regex, plus an explainer that falls back to templates when the model fails.",
+            "Tier 1 redaction strips Vietnamese phone, ID, bank and money patterns before anything reaches the model.",
+            "Zod contracts on all seven work package interfaces, plus ADRs and CI gates.",
+        ],
+        href: "https://unesco.w9.nu",
+        status: "LIVE",
+    },
+    {
+        title: "DustGuard VN",
+        year: "2026",
+        role: "Frontend routes and auth, plus the print poster pipeline",
+        stack: "React 18 · Tailwind · Cloudflare Workers · D1 · R2 · Typst",
+        summary:
+            "Inspection platform for construction dust. Officers rank risk, open violation cases, generate the legal documents, and track the fix.",
+        highlights: [
+            "Top 6 at the Clean Air Innovation 2026 final, Hanoi, 07/09/2026.",
+            "Built the Citizen, Staff and Executive portals and the auth flow.",
+            "70x90cm poster compiled from one Typst source, with 36 QA and release checks behind it.",
+        ],
+        href: "https://dustguard.phamphunguyenhung.com",
+        status: "TOP 6",
+    },
+    {
+        title: "Viettoria",
+        year: "Sep 2026",
+        role: "53 of 54 commits",
+        stack: "Next.js 16 · Three.js · react-three/fiber · Draco · Tailwind 4",
+        summary:
+            "Store selling collectible models of five Vietnamese monuments, each with a 3D viewer in the browser.",
+        highlights: [
+            "Draco compressed models land between 1.1 and 1.5MB each, inside the size target.",
+            "Public assets went 332MB down to 15MB, hero video 17.5MB down to 2.6MB.",
+            "41 of 41 routes render, 168 unit tests pass, zero type errors.",
+        ],
+        href: "https://viettoria.pages.dev",
+        status: "LIVE",
+    },
+    {
+        title: "VinAI Prep",
+        year: "Jul 2026",
+        role: "Sole author, 24 commits in two days",
+        stack: "React 19 · Vite 8 · TypeScript 6 · FastAPI · Gemini · Expo",
+        summary:
+            "Exam prep app for the Vingroup and VinUni AI Applied entrance exam, in Vietnamese, on web and mobile.",
+        highlights: [
+            "409 questions across four modules, with Gemini rubric scoring for short answers and case studies.",
+            "Full CI for both the web deploy and the mobile build.",
+        ],
+        href: "https://master.vin-ai-prep.pages.dev",
+        status: "LIVE",
     },
     {
         title: "Nguyen Restaurant",
-        year: "2025 - Present",
-        stack: "TypeScript · Next.js · Tailwind CSS",
+        year: "2025 - 2026",
+        role: "Sole author, 280 commits over eight months",
+        stack: "Rust · Axum · sqlx · SQLite · Next.js 16 · React 19",
         summary:
-            "Commercial restaurant website optimized for local discovery and practical customer conversion.",
+            "Bilingual site and ordering system for a real restaurant. Menu, cart, coupons, reservations, newsletter, admin, JWT auth.",
         highlights: [
-            "Built a live full-stack web presence for a real restaurant brand.",
-            "Balanced responsive presentation with fast static delivery.",
+            "Rust backend on SQLite with a Next.js 16 frontend, deployed by a single script on Debian 13.",
+            "Collapsed 9 redundant migrations into one clean initial schema.",
+            "Payment and email integrations are wired but have never run against live keys.",
         ],
         href: "https://nguyenrestaurant.de",
         status: "LIVE",
+    },
+    {
+        title: "Anna's Archive MCP",
+        year: "Aug 2026",
+        role: "Sole author",
+        stack: "Rust · tokio · reqwest · scraper · MCP",
+        summary:
+            "CLI and MCP server that searches Anna's Archive, works out which mirror is actually up, and falls back through IPFS and Libgen when a download stalls.",
+        highlights: [
+            "7 MCP tools, 3,505 lines, 13 tests.",
+            "Ranks mirrors off the official list, cross checked against heartbeats.",
+            "Atomic writes and path traversal safe filenames.",
+        ],
+        href: "https://github.com/ShayNeeo/annas-mcp",
+        status: "OPEN",
+    },
+    {
+        title: "Rạp Xiếc Bỏ Túi",
+        year: "Sep 2026",
+        role: "Led the AI, 3D and export work, 20 of 35 commits",
+        stack: "React 19 · Vite 8 · Three.js · Gemini RAG · jsPDF",
+        summary:
+            "Portal about modern circus in Vietnam: history, venue maps, an interactive 3D circus, and a chatbot that answers from a curated Vietnamese corpus.",
+        highlights: [
+            "RAG index of 17 chunks at 3072 dimensions across 7 topic categories.",
+            "Traced the broken ticket PNG export to a pixelRatio OOM, a foreignObject clip, and scrollWidth against clientWidth.",
+        ],
+        href: "https://github.com/ShayNeeo/rapxiecbotui",
+        status: "OPEN",
     },
 ];
 
 const skillGroups: SkillGroup[] = [
     {
-        title: "Systems",
-        icon: <Server aria-hidden="true" />,
-        skills: ["Rust", "Axum", "Leptos", "Tokio", "REST APIs", "OAuth 2.0", "JWT"],
+        title: "AI Systems",
+        icon: <BrainCircuit aria-hidden="true" />,
+        skills: ["vLLM", "TensorRT-LLM", "llama.cpp", "Ollama", "PagedAttention", "GGUF/AWQ 4-bit", "MCP", "A2A", "ReAct", "LangGraph", "Unsloth", "PyTorch"],
     },
     {
-        title: "Data Engineering",
+        title: "Data",
         icon: <Database aria-hidden="true" />,
-        skills: ["Python AsyncIO", "Pandas", "NumPy", "ETL", "Web Scraping", "Econometrics", "Time-Series"],
+        skills: ["Iceberg", "Delta Lake", "DuckDB", "Qdrant", "Milvus", "Feast", "PostgreSQL", "SurrealDB", "SQLite", "Prisma", "Drizzle", "Pandas"],
     },
     {
-        title: "Product UI",
+        title: "Languages",
         icon: <Code2 aria-hidden="true" />,
-        skills: ["Next.js 15", "React", "TypeScript", "Tailwind CSS 4", "Framer Motion", "Node.js"],
+        skills: ["Python", "FastAPI", "AsyncIO", "Rust", "Axum", "Leptos", "TypeScript", "Next.js", "React", "R", "Stata", "SQL"],
     },
     {
         title: "Infra",
-        icon: <ShieldCheck aria-hidden="true" />,
-        skills: ["Docker", "Caddy", "Nginx", "Cloudflare Pages", "Cloudflare WAF", "OCI", "Multi-region DNS"],
+        icon: <Server aria-hidden="true" />,
+        skills: ["Docker", "Cloudflare Pages", "Workers", "Tunnels", "WAF", "GitHub Actions", "Linux", "Bash", "Nginx", "Caddy", "HA/DR", "GPU FinOps"],
     },
     {
-        title: "AI/ML",
-        icon: <BrainCircuit aria-hidden="true" />,
-        skills: ["Transformers", "Vision Models", "Gradient Boosting", "SHAP", "Scikit-learn", "NVIDIA NIM"],
+        title: "Quant & Obs",
+        icon: <ShieldCheck aria-hidden="true" />,
+        skills: ["OpenTelemetry", "OpenLineage", "Sentry", "CI gating", "PLS-SEM", "CB-SEM", "Quantile Regression", "Forecasting", "Econometrics", "Causal Discovery"],
     },
 ];
 
 const achievements: Achievement[] = [
     {
-        title: "Datathon 2026",
-        detail: "Top 9 at VinUni Data Analysis Competition with an end-to-end 650k+ order audit.",
+        title: "Clean Air Innovation 2026",
+        detail: "Top 6 finalist with DustGuard VN. Final round in Hanoi, 07/09/2026.",
         year: "2026",
     },
     {
-        title: "DAZONE 2025",
-        detail: "Top 10 finalist using feature engineering, Gradient Boosting, and SHAP interpretation.",
+        title: "ESG thesis, IU 2026",
+        detail: "Market reactions to negative ESG disclosure in S&P 500 Form 8-K filings, advised by Dr Nguyen Phuc Lam Thy.",
+        year: "2026",
+    },
+    {
+        title: "Datathon 2026",
+        detail: "Top 9. Python and R ETL over 650k transactions worth 16.4B VND, with the reports generated automatically.",
+        year: "2026",
+    },
+    {
+        title: "Grab the Future 2026",
+        detail: "National technical finalist. Mobility prototype built on public transit and demographic data.",
+        year: "2026",
+    },
+    {
+        title: "DAZONE and Quant Challenge",
+        detail: "Top 10 at DAZONE 2025. Ranked 12 of 198 at the Vietnam Quant Challenge 2026.",
         year: "2025",
     },
     {
-        title: "Green Innovation Camp",
-        detail: "Best Innovative Idea for sustainable strategy and product execution.",
-        year: "2024",
-    },
-    {
         title: "IU Innovation Camp",
-        detail: "Winner with an MVP shipped in a 36-hour hackathon.",
+        detail: "First place. Working MVP built and pitched in a 36 hour sprint.",
         year: "2023",
     },
+];
+
+const roles: Role[] = [
     {
-        title: "Scholarship",
-        detail: "International University - VNU HCMC scholarship recipient, Semester 1 AY 2023-2024.",
-        year: "2024",
+        org: "Research Assistant, VinUni V-RIC x VinSmart Future",
+        period: "Jun 2026 - Present",
+        detail:
+            "Green Smart Mobility group. Telemetry streaming and anomaly detection for VinFast and V-Green fleets, then causal root cause work on battery health inside the V-RIC sandbox.",
+    },
+    {
+        org: "Retail Banking Operations Intern, BIDV",
+        period: "Feb 2026 - Apr 2026",
+        detail:
+            "Audited retail credit files, checked collateral valuations, kept CRM data clean, helped with SmartBanking onboarding.",
     },
 ];
 
@@ -293,6 +436,7 @@ function QuestCard({ quest, index }: { quest: Quest; index: number }) {
                     {quest.status}
                 </span>
             </div>
+            <p className="mb-3 font-mono text-xs uppercase leading-5 tracking-[0.14em] text-retro-text/55">{quest.role}</p>
             <p className="mb-4 font-mono text-sm uppercase tracking-[0.14em] text-retro-secondary">{quest.stack}</p>
             <p className="font-sans text-sm leading-6 text-retro-text/78">{quest.summary}</p>
             <ul className="mt-5 space-y-3 font-sans text-sm text-retro-text/72">
@@ -341,6 +485,9 @@ export default function Home() {
                     <Link href="#quests" className="hover:text-retro-yellow">
                         Quests
                     </Link>
+                    <Link href="#log" className="hover:text-retro-yellow">
+                        Log
+                    </Link>
                     <Link href="#loadout" className="hover:text-retro-yellow">
                         Loadout
                     </Link>
@@ -367,12 +514,12 @@ export default function Home() {
                     <div className="space-y-4">
                         <p className="font-mono text-base uppercase tracking-[0.24em] text-retro-accent md:text-lg md:tracking-[0.26em]">PHAM QUOC THANH / SHAYNEEO</p>
                         <h1 className="max-w-4xl text-5xl font-bold leading-[0.88] text-retro-text retro-shadow md:text-8xl">
-                            FinTech Engineer
-                            <span className="block text-retro-primary">MVP Architect</span>
+                            AI Systems
+                            <span className="block text-retro-primary">Infrastructure</span>
                         </h1>
                         <p className="max-w-3xl font-sans text-base leading-7 text-retro-text/80 md:text-xl md:leading-8">
-                            Rust/Systems Developer and Data Engineering builder in Ho Chi Minh City, turning finance research,
-                            scraping pipelines, and product ideas into fast, shipped web systems.
+                            I serve models, ship the pipelines under them, and write down what broke. Finance degree,
+                            systems and infrastructure work since.
                         </p>
                     </div>
 
@@ -404,14 +551,14 @@ export default function Home() {
                                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-retro-text/50">Education</p>
                                 <p className="mt-1 text-2xl font-bold leading-none text-retro-yellow">IU - VNU HCMC</p>
                                 <p className="mt-2 font-sans text-sm leading-5 text-retro-text/70">
-                                    Finance & Banking, Financial Investment, expected 2027.
+                                    Finance and Banking, Financial Investment. Graduating 2027.
                                 </p>
                             </div>
                             <div className="border-2 border-white/10 bg-white/[0.04] p-3">
                                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-retro-text/50">Current build</p>
-                                <p className="mt-1 text-2xl font-bold leading-none text-retro-secondary">W9 Labs</p>
+                                <p className="mt-1 text-2xl font-bold leading-none text-retro-secondary">VinUni V-RIC</p>
                                 <p className="mt-2 font-sans text-sm leading-5 text-retro-text/70">
-                                    Product lab for Rust services, mail utilities, QR tools, and self-hosted infra.
+                                    Research assistant on electric fleet telemetry and causal reliability.
                                 </p>
                             </div>
                         </div>
@@ -436,7 +583,7 @@ export default function Home() {
                     id="quests"
                     icon={<Rocket aria-hidden="true" />}
                     title="Active Quests"
-                    subtitle="CV-backed projects rewritten as readable proof: shipped systems, research pipelines, automation, and commercial web work."
+                    subtitle="Shipped work, with the numbers each repo actually recorded. Where a project has limits, the card says so."
                 >
                     <div className="grid gap-5 md:grid-cols-2">
                         {quests.map((quest, index) => (
@@ -446,10 +593,31 @@ export default function Home() {
                 </SectionShell>
 
                 <SectionShell
+                    id="log"
+                    icon={<Server aria-hidden="true" />}
+                    title="Work Log"
+                    subtitle="Two stints so far. The current one is research work on EV fleet telemetry for VinSmart Future."
+                >
+                    <div className="grid gap-4 md:grid-cols-2">
+                        {roles.map((role) => (
+                            <div key={role.org} className="border-2 border-white/10 bg-black/30 p-5">
+                                <div className="mb-3 flex items-start justify-between gap-3">
+                                    <h3 className="text-2xl font-bold leading-tight text-retro-yellow">{role.org}</h3>
+                                    <span className="shrink-0 border border-retro-accent/40 px-2 py-1 font-mono text-xs text-retro-accent">
+                                        {role.period}
+                                    </span>
+                                </div>
+                                <p className="font-sans text-sm leading-6 text-retro-text/72">{role.detail}</p>
+                            </div>
+                        ))}
+                    </div>
+                </SectionShell>
+
+                <SectionShell
                     id="loadout"
                     icon={<Code2 aria-hidden="true" />}
                     title="Skill Loadout"
-                    subtitle="A recruiter-readable inventory of what the arcade shell is really selling: systems, data, product UI, infrastructure, and AI/ML."
+                    subtitle="The actual inventory: serving, data, languages, infrastructure, and the quantitative side that came with the finance degree."
                 >
                     <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
                         {skillGroups.map((group) => (
@@ -477,9 +645,9 @@ export default function Home() {
                     id="achievements"
                     icon={<Trophy aria-hidden="true" />}
                     title="Achievement Items"
-                    subtitle="Competition, scholarship, and research signals pulled from the newest CVs, without burying the engineering story."
+                    subtitle="Competitions and academic work, kept separate from the engineering so neither gets buried."
                 >
-                    <div className="grid gap-4 md:grid-cols-5">
+                    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                         {achievements.map((achievement) => (
                             <div key={achievement.title} className="border-2 border-white/10 bg-black/30 p-4">
                                 <div className="mb-4 flex items-center justify-between gap-3">
@@ -503,13 +671,13 @@ export default function Home() {
                 >
                     <div className="grid gap-6 md:grid-cols-[1fr_0.9fr]">
                         <div className="border-2 border-retro-secondary bg-retro-secondary/10 p-5">
-                            <p className="font-mono text-sm uppercase tracking-[0.24em] text-retro-secondary">Ready for</p>
+                            <p className="font-mono text-sm uppercase tracking-[0.24em] text-retro-secondary">Open to</p>
                             <h3 className="mt-3 text-4xl font-bold leading-none text-retro-text">
-                                FinTech products, data systems, scraping infrastructure, and MVP builds.
+                                AI infrastructure, data platforms, model serving, and full stack MVP work.
                             </h3>
                             <p className="mt-4 font-sans text-sm leading-6 text-retro-text/74">
-                                {contactPolicy}. The fastest public route is email or Telegram; GitHub and LinkedIn carry the
-                                technical trail.
+                                {contactPolicy}. Email or Telegram gets the fastest answer. GitHub and LinkedIn carry the rest
+                                of the trail.
                             </p>
                             <div className="mt-6 flex items-center gap-2 font-mono text-sm uppercase tracking-[0.18em] text-retro-yellow">
                                 <MapPin className="h-4 w-4" aria-hidden="true" />

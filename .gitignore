@@ -6,3 +6,5 @@ tsconfig.tsbuildinfo
 .superpowers/
 CV*.pdf
 pham_quoc_thanh_tech_cv*.pdf
+
+.wrangler/
